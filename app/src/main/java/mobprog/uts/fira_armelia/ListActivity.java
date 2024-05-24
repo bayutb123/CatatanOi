@@ -64,9 +64,11 @@ public class ListActivity extends AppCompatActivity {
     }
 
     private void observe() {
-        mainViewModel.listLiveData.observe(this, dataCatatanItems -> {
-            recyclerAdapter = new RecyclerAdapter(dataCatatanItems);
-            recyclerView.setAdapter(recyclerAdapter);
+        mainViewModel.listLiveData.observe(this, data -> {
+            if (data != null) {
+                recyclerAdapter = new RecyclerAdapter(data);
+                recyclerView.setAdapter(recyclerAdapter);
+            }
         });
     }
 }
